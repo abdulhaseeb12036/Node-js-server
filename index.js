@@ -7,6 +7,7 @@ const { error } = require('console')
 const { env } = require('process')
 
 const app=express()
+app.use(express.json())
 
 async function getConnected(){
     try{
@@ -78,3 +79,43 @@ app.get('/deleteAll/:feild/:value',async(req,res)=>{
     console.log(result)
     res.send(result)
 })
+
+
+
+// post,delete,put apis for practical implementation
+
+app.post('/add',async(req,res)=>{
+    let data=req.body
+    let result=await student_crud.create(data)
+    console.log(result)
+    res.send(result)
+})
+app.put('/update/:_id',async(req,res)=>{
+    let data=req.body
+    
+    let result=await student_crud.update({_id},data)
+    console.log(result)
+    res.send(result)
+})
+
+app.put('/updateAll/:_id',async(req,res)=>{
+   let data=req.body
+    let result=await student_crud.updateMany({_id},data)
+    console.log(result)
+    res.send(result)
+})
+
+app.get('/delete/:_id',async(req,res)=>{
+    const _id=req.params._id
+    let result=await student_crud._delete({_id})
+    console.log(result)
+    res.send(result)
+})
+app.get('/deleteAll/:feild/:value',async(req,res)=>{
+    const feild=req.params.feild
+    const value=req.params.value
+    let result=await student_crud._deleteMany({feild:value})
+    console.log(result)
+    res.send(result)
+})
+
