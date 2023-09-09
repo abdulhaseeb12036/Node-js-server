@@ -92,7 +92,7 @@ app.post('/add',async(req,res)=>{
 })
 app.put('/update/:_id',async(req,res)=>{
     let data=req.body
-    let id=req.params._id
+    let _id=req.params._id
     let result=await student_crud.update({_id},data)
     console.log(result)
     res.send(result)
@@ -100,7 +100,7 @@ app.put('/update/:_id',async(req,res)=>{
 
 app.put('/updateAll/:_id',async(req,res)=>{
    let data=req.body
-   let id=req.params._id
+   let _id=req.params._id
     let result=await student_crud.updateMany({_id},data)
     console.log(result)
     res.send(result)
@@ -108,7 +108,7 @@ app.put('/updateAll/:_id',async(req,res)=>{
 
 app.delete('/delete/:_id',async(req,res)=>{
     const _id=req.params._id
-    
+
     let result=await student_crud._delete({_id})
     console.log(result)
     res.send(result)
