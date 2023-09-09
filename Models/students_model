@@ -1,0 +1,14 @@
+const mongoose=require('mongoose')
+require('dotenv').config()
+
+const student_schema=new mongoose.Schema(
+    {
+        name:String,
+        email:String,
+        password:String,
+        mobile:Number
+    }
+    
+    );
+
+module.exports=new mongoose.model(process.env.COLLECTION_NAME,student_schema)
