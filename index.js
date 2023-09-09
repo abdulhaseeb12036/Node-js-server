@@ -98,10 +98,10 @@ app.put('/update/:_id',async(req,res)=>{
     res.send(result)
 })
 
-app.put('/updateAll/:_id',async(req,res)=>{
+app.put('/updateAll',async(req,res)=>{
    let data=req.body
-   let _id=req.params._id
-    let result=await student_crud.updateMany({_id},data)
+   l
+    let result=await student_crud.updateMany(data.previousField,data._new)
     console.log(result)
     res.send(result)
 })
